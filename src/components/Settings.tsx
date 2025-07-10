@@ -24,7 +24,7 @@ export function Settings({ theme }: SettingsProps) {
       {/* Header */}
       <div>
         <h2 className="text-3xl font-bold mb-2" style={{ color: theme.colors.text }}>
-          Settings
+          Settings 設定
         </h2>
         <p className="text-lg" style={{ color: theme.colors.textSecondary }}>
           Customize your NekoLinks experience

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Plus, ExternalLink, Heart, Tag, Copy, Edit2, Trash2, Filter, Link2, Upload, Image } from 'lucide-react';
+import { Plus, ExternalLink, Heart, Tag, Copy, Edit2, Trash2, Filter, Upload, Image } from 'lucide-react';
 import { Link } from '../types';
 import { useLinks } from '../hooks/useLocalStorage';
 import { fetchLinkMetadata, isValidUrl } from '../utils/linkUtils';
+import { PawIcon } from './CatSilhouette';
 
 interface LinkCollectorProps {
   theme: any;
@@ -138,10 +139,11 @@ export function LinkCollector({ theme, searchQuery }: LinkCollectorProps) {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-4 sm:space-y-0">
         <div>
           <h2 className="text-3xl font-bold" style={{ color: theme.colors.text }}>
-            Link Collection
+            Link Collection 
+            <span className="ml-2 text-lg opacity-60">リンク集</span>
           </h2>
           <p className="text-lg" style={{ color: theme.colors.textSecondary }}>
-            {links.length} links saved
+            {links.length} links saved 
           </p>
         </div>
         
@@ -188,6 +190,7 @@ export function LinkCollector({ theme, searchQuery }: LinkCollectorProps) {
           >
             <Plus size={20} />
             <span>Add Link</span>
+            <PawIcon size={16} className="opacity-70" />
           </motion.button>
         </div>
       </div>
@@ -440,9 +443,17 @@ export function LinkCollector({ theme, searchQuery }: LinkCollectorProps) {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   onClick={() => toggleFavorite(link.id)}
-                  className={`p-1 rounded ${link.isFavorite ? 'text-red-500' : 'text-gray-400'}`}
+                  className={`p-1 rounded transition-all duration-200 ${
+                    link.isFavorite 
+                      ? 'text-red-500 transform scale-110' 
+                      : 'text-gray-400 hover:text-pink-400'
+                  }`}
                 >
-                  <Heart size={16} fill={link.isFavorite ? 'currentColor' : 'none'} />
+                  <Heart 
+                    size={16} 
+                    fill={link.isFavorite ? 'currentColor' : 'none'}
+                    className={link.isFavorite ? 'animate-pulse' : ''}
+                  />
                 </motion.button>
               </div>
 
@@ -452,13 +463,14 @@ export function LinkCollector({ theme, searchQuery }: LinkCollectorProps) {
                   {link.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-2 py-1 text-xs rounded-full"
+                      className="px-2 py-1 text-xs rounded-full flex items-center space-x-1"
                       style={{
                         backgroundColor: `${theme.colors.primary}33`,
                         color: theme.colors.primary,
                       }}
                     >
-                      #{tag}
+                      <PawIcon size={10} />
+                      <span>#{tag}</span>
                     </span>
                   ))}
                 </div>
@@ -484,7 +496,10 @@ export function LinkCollector({ theme, searchQuery }: LinkCollectorProps) {
                     className="p-2 rounded-lg hover:bg-opacity-80 transition-colors"
                     style={{ backgroundColor: `${theme.colors.primary}33` }}
                   >
-                    <ExternalLink size={16} style={{ color: theme.colors.primary }} />
+                    <div className="relative">
+                      <ExternalLink size={16} style={{ color: theme.colors.primary }} />
+                      <PawIcon size={8} className="absolute -top-1 -right-1 opacity-60" color={theme.colors.primary} />
+                    </div>
                   </motion.button>
                   
                   <motion.button
@@ -533,16 +548,19 @@ export function LinkCollector({ theme, searchQuery }: LinkCollectorProps) {
           className="text-center py-12"
         >
           <div className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center"
-               style={{ backgroundColor: `${theme.colors.primary}20` }}>
-            <Link2 size={32} style={{ color: theme.colors.primary }} />
+              style={{ 
+                backgroundColor: `${theme.colors.primary}20`,
+                boxShadow: `0 0 30px ${theme.colors.primary}20`
+              }}>
+           <PawIcon size={32} style={{ color: theme.colors.primary }} />
           </div>
           <h3 className="text-xl font-semibold mb-2" style={{ color: theme.colors.text }}>
-            {searchQuery || filterTag ? 'No links found' : 'No links yet'}
+           {searchQuery || filterTag ? 'No links found にゃ~' : 'No links yet にゃ~'}
           </h3>
           <p className="text-lg mb-6" style={{ color: theme.colors.textSecondary }}>
             {searchQuery || filterTag 
-              ? 'Try adjusting your search or filter criteria' 
-              : 'Start building your link collection by adding your first link'}
+             ? 'Try adjusting your search or filter criteria 🐾' 
+             : 'Start building your link collection by adding your first link 🌸'}
           </p>
           {!searchQuery && !filterTag && (
             <motion.button
@@ -552,7 +570,7 @@ export function LinkCollector({ theme, searchQuery }: LinkCollectorProps) {
               className="px-6 py-3 rounded-lg text-white font-medium"
               style={{ backgroundColor: theme.colors.primary }}
             >
-              Add Your First Link
+             Add Your First Link
             </motion.button>
           )}
         </motion.div>

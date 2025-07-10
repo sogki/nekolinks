@@ -43,6 +43,7 @@ export interface Settings {
   customColors?: Partial<Theme['colors']>;
   animations: boolean;
   compactMode: boolean;
+  _lastUpdated?: number; // Internal field to force re-renders
 }
 
 export type Tab = 'links' | 'anime' | 'settings';

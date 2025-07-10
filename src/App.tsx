@@ -8,7 +8,7 @@ import { useSettings } from './hooks/useSettings';
 import { Tab } from './types';
 
 function App() {
-  const { currentTheme } = useSettings();
+  const { currentTheme, settings } = useSettings();
   const [activeTab, setActiveTab] = useState<Tab>('links');
   const [searchQuery, setSearchQuery] = useState('');
 

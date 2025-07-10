@@ -4,7 +4,7 @@ import { useMemo } from 'react';
 
 const defaultThemes: Theme[] = [
   {
-    name: 'Midnight Neko',
+    name: 'Midnight Neko 🌙',
     colors: {
       primary: '#8B5CF6',
       secondary: '#A78BFA',
@@ -16,7 +16,7 @@ const defaultThemes: Theme[] = [
     },
   },
   {
-    name: 'Purple Dream',
+    name: 'Purple Dream 💜',
     colors: {
       primary: '#9333EA',
       secondary: '#A855F7',
@@ -28,7 +28,7 @@ const defaultThemes: Theme[] = [
     },
   },
   {
-    name: 'Sakura Night',
+    name: 'Sakura Night 🌸',
     colors: {
       primary: '#EC4899',
       secondary: '#F472B6',
@@ -42,7 +42,7 @@ const defaultThemes: Theme[] = [
 ];
 
 const defaultSettings: Settings = {
-  theme: 'Midnight Neko',
+  theme: 'Midnight Neko 🌙',
   accentColor: '#F472B6',
   animations: true,
   compactMode: false,
@@ -70,8 +70,14 @@ export function useSettings() {
   }, [settings.theme, settings.accentColor, settings.customColors]);
   
   const updateSettings = (updates: Partial<Settings>) => {
-    const newSettings = { ...settings, ...updates };
-    setSettings(newSettings);
+    setSettings(prevSettings => {
+      const newSettings = {
+        ...prevSettings,
+        ...updates,
+        _lastUpdated: Date.now(),
+      };
+      return newSettings;
+    });
   };
 
   return {

@@ -173,7 +173,7 @@ export function AnimeTracker({ theme, searchQuery }: AnimeTrackerProps) {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-4 sm:space-y-0">
         <div>
           <h2 className="text-3xl font-bold" style={{ color: theme.colors.text }}>
-            Anime Tracker
+            Anime Tracker アニメ
           </h2>
           <p className="text-lg" style={{ color: theme.colors.textSecondary }}>
             {anime.length} anime in your collection
@@ -631,7 +631,7 @@ export function AnimeTracker({ theme, searchQuery }: AnimeTrackerProps) {
             <Play size={32} style={{ color: theme.colors.primary }} />
           </div>
           <h3 className="text-xl font-semibold mb-2" style={{ color: theme.colors.text }}>
-            {searchQuery || filterStatus ? 'No anime found' : 'No anime yet'}
+            {searchQuery || filterStatus ? 'No anime found' : 'No anime yet にゃ~'}
           </h3>
           <p className="text-lg mb-6" style={{ color: theme.colors.textSecondary }}>
             {searchQuery || filterStatus 
