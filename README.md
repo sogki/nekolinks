@@ -74,7 +74,7 @@ This project is licensed under the **MIT License**.
 
 ## ⭐️ Support
 
-If you like this project, please consider giving it a ⭐️ on [GitHub](https://github.com/yourusername/NekoLinks)!
+If you like this project, please consider giving it a ⭐️ on [GitHub](https://github.com/sogki/NekoLinks)!
 
 ---
 
