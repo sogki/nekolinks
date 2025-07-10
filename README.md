@@ -18,7 +18,7 @@ A **clean, minimalist link management app** to organize and share your important
 
 ## 🚀 Demo
 
-[👉 Live Demo](https://neko-links.vercel.app) *(replace with your demo link)*
+[👉 Live Demo](https://nekolinks.vercel.app) *(replace with your demo link)*
 
 &#x20;
 
